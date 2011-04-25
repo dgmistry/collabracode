@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html >
+<html>
+  <head>
+    <title>Lesson 2 -- Event Handling</title>
+    <script type="text/javascript" src="util.js"></script>
+    <script type="text/javascript" src="student_calculator.js"></script>
+    <script type="text/javascript" src="calculator.js"></script>
+    <link rel="stylesheet" href="calculator.css"/>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <table>
+      <tbody>
+        <tr>
+          <td colspan="4" id="numeric-display">0</td>
+        </tr>
+        <tr>
+          <td class="button" id="button-mc">MC</td>
+          <td class="button" id="button-m+">M+</td>
+          <td class="button" id="button-m-">M-</td>
+          <td class="button" id="button-mr">MR</td>
+        </tr>
+        <tr>
+          <td class="button" id="button-C">C</td>
+          <td class="button" id="button-negate">+/-</td>
+          <td class="button" id="button-divide">/</td>
+          <td class="button" id="button-multiply">+</td>
+        </tr>
+        <tr>
+          <td class="button" id="button-7">7</td>
+          <td class="button" id="button-8">8</td>
+          <td class="button" id="button-9">9</td>
+          <td class="button" id="button-subtract">-</td>
+        </tr>
+        <tr>
+          <td class="button" id="button-4">4</td>
+          <td class="button" id="button-5">5</td>
+          <td class="button" id="button-6">6</td>
+          <td class="button" id="button-add">+</td>
+        </tr>
+        <tr>
+          <td class="button" id="button-1">1</td>
+          <td class="button" id="button-2">2</td>
+          <td class="button" id="button-3">3</td>
+          <td class="button" id="button-equal" rowspan="2">=</td>
+        </tr>
+        <tr>
+          <td class="button" id="button-0" colspan="2">0</td>
+          <td class="button" id="button-dot">.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <div>
+        To make this work, you must implement the following in <code>student_calculator.js</code>:
+      </div>
+      <ul>
+        <li>button handlers</li>
+        <li>memory value</li>
+        <li>current value as a string</li>
+        <li>MC = Memory Clear</li>
+        <li>M+ = Add to existing value in memory and display result</li>
+        <li>M- = Subtract from existing value in memory and display result</li>
+        <li>MR = Show current memory value</li>
+        <li>+ = Add</li>
+        <li>- = Subtract</li>
+        <li>* = Multiply</li>
+        <li>/ = Divide</li>
+        <li>+-/ = Negate</li>
+        <li>Allow up to one "." in the string</li>
+      </ul>
+    </div>
+  </body>
+</html>
