@@ -9,23 +9,26 @@ var riverCallback = {
 	var river = document.getElementById("river");
 	var items = obj.rss.channel.item;
 	
+
 	
 	for (var key in items) {
 		var domTitle = document.createElement("p"); //create a DOM element
 		itemTitle = items[key].title; // pulling the value from the JSON
-		//domTitle.innerHTML='<a href="javascript:;">' + itemTitle + '</a>'; // assigning the value to the DOM element
-		domTitle.className ="article-title"; //setting the CSS class for 
-		domTitle.innerHTML='<a href="domArticle.className ="article-title";">' + itemTitle + '</a>'; // assigning the value to the DOM element
-		
-		river.appendChild(domTitle);
+		domTitle.className ="article-title"; //setting the CSS class for title
 		var domArticle = document.createElement("div"); 
+		domArticle.id = "divID";
+		domTitle.innerHTML='<a href="javascript:  addEvent(domArticle, "click", articleVisible(domArticle.id));">' + itemTitle + '</a>'; // assigning the value to the DOM element
+		//domTitle.innerHTML = itemTitle; // assigning the value to the DOM element
+		river.appendChild(domTitle);
 		itemBody = items[key].description;
 		itemBody=itemBody.replace(/&quot;/g, '"');
 		domArticle.innerHTML = itemBody;
-		domArticle.className ="hidden";
+		domArticle.className ="article-description hidden";
 		domTitle.appendChild(domArticle);
+		
 		//console.log(items[key].title);
 	}
+	
 	
 	
     log("SUCCESS: Loaded rss.json file");
@@ -34,3 +37,12 @@ var riverCallback = {
     log("ERROR: Unable to download rss.json file" + req);
   }
 };
+
+function articleVisible(domArticle) {
+	if (domArticle.className ="hidden"){
+		domArticle.className ="article-title";
+	}
+	else {
+		domArticle.className ="hidden";
+	}
+	}
