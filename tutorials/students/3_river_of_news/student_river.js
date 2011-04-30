@@ -16,8 +16,12 @@ var riverCallback = {
 		itemTitle = items[key].title; // pulling the value from the JSON
 		domTitle.className ="article-title"; //setting the CSS class for title
 		var domArticle = document.createElement("div"); 
-		domArticle.id = "divID";
-		domTitle.innerHTML='<a href="javascript:  addEvent(domArticle, "click", articleVisible(domArticle.id));">' + itemTitle + '</a>'; // assigning the value to the DOM element
+		var anchor = document.createElement("a");
+		anchor.innerHTML = itemTitle;
+		anchor.setAttribute("href", "#");
+		domArticle.appendChild(anchor);
+		addEvent(anchor, "click", domArticle);
+		//domTitle.innerHTML='<a href="javascript:  addEvent(domArticle, "click", articleVisible(domArticle.id));">' + itemTitle + '</a>'; // assigning the value to the DOM element
 		//domTitle.innerHTML = itemTitle; // assigning the value to the DOM element
 		river.appendChild(domTitle);
 		itemBody = items[key].description;
