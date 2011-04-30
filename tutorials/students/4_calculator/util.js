@@ -26,3 +26,4 @@ function setInnerText(elem, value) {
     elem.innerText = value;
   }
 }
+ 

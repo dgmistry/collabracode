@@ -130,7 +130,7 @@ function addEventHandler(){
 				memory = currentValue;
 				setDisplayAsText(memory);
 				break;
-			case "M+":  //Show Memory Value
+			case "M+":  //Show Memory Value 
 				memory = currentValue;
 				//setDisplayAsText(currentValue);
 				break;
