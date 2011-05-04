@@ -33,7 +33,7 @@
                     <br />
                     
                     <label for="email">Email Address:</label><br />
-                    <input type="text" name="email" id="name" /><br />
+                    <input type="text" name="email" id="email" /><br />
                     <br />
                     
                     <div style="clear: both"></div>
@@ -41,6 +41,41 @@
                 </fieldset>
             </form>
             <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+			<script type="text/javascript">
+				
+				function checkForm() {
+					var failed = false;
+					$('form input, form textarea').each(function (idx, elem) {
+						if ($(elem).val() === '') {
+							alert($(elem).attr('name') + ' cannot be blank.');
+							failed = true;
+						}
+					});
+					console.log($("#email").val().indexOf('@'));
+					return !failed;
+				}
+				
+				function clearForm() {
+					var failed = false;
+					//$('form')[0].reset(); 
+					$('form').each(function(idx, elem) { 
+						elem.reset();
+					});
+					return !failed;
+				}
+				
+				function submitForm() {
+					if (checkForm())
+					{
+						alert('Submitted');
+					}
+				}
+				$('#clear').bind('click', clearForm);
+				$('#submit').bind('click', submitForm);
+        
+			</script>
+			
+			
         </div>
     </body> 
 </html>
