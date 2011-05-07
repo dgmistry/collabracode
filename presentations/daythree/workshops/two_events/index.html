@@ -5,6 +5,39 @@
         <style type="text/css" media="screen">
             #comment_form { width: 400px; margin: 10px auto; }
             #comment { height: 70px;}
+            #length_ticker { color: #666; font-size: 0.7em; margin-top: -2px; text-align: right; }
+            .hide { display: none; }
+            .message 
+            {
+                padding: 10px 15px 10px 40px;
+                margin: 10px 0;
+                font-weight: bold;
+                overflow: hidden;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+            }
+ 
+            .message p 
+            {
+                padding: 0;
+                width: 93%;
+                float: left;
+            }
+ 
+            .message.error 
+            { 
+                border: 1px solid #e9c59b;
+                background: #ffecce;
+                color: #e3302c;
+            }
+ 
+            .message.success 
+            {
+                border: 1px solid #bfde84;
+                background: #edfbd8;
+                color: #508600;
+            }
         </style>
     </head> 
     <body> 
@@ -22,10 +55,14 @@
             <form action="#" method="post" id="comment_form">
                 <fieldset>
                     <legend>Add Comment</legend>
-                    
+                    <div id='error'>
+					</div>
                     <div style="float: right;">
                         <label for="comment">Comment:</label><br />
                         <textarea name="comment" id="comment"></textarea><br />
+						<p id="length">
+							
+						</p>
                     </div>
                     
                     <label for="name">Name:</label><br />
@@ -43,16 +80,48 @@
             <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
 			<script type="text/javascript">
 				
+				var myFormElements = $('form input, form textarea');
+				var myFormLabels = $('form label');
+				
 				function checkForm() {
 					var failed = false;
-					$('form input, form textarea').each(function (idx, elem) {
+					myFormElements.each(function (idx, elem) {
 						if ($(elem).val() === '') {
-							alert($(elem).attr('name') + ' cannot be blank.');
-							failed = true;
+
+							var formLabelName = $(elem).attr('name');
+							alert(formLabelName+ ' cannot be blank.');
+
+							var myLabel = ("form label[for='" + $(this).attr('name')+"']'" );
+							//var myLabel = ("form label[for='" + $(elem).attr('name')+"']'" );
+							$(myLabel).css({'color' : 'red', 'font-weight' : 'bold', 'font-size' : '2em'});;
+						
+							$('#error').html("Please enter " + formLabelName);
+						
+							failed = true;				
 						}
 					});
-					console.log($("#email").val().indexOf('@'));
-					return !failed;
+					
+					console.log($('#comment').val().length);
+					
+					//$('#length').text($('#comment').val().length + " characters");
+					
+					$('#length').bind('keyup', function() {
+						
+					//	var count = $(this).val();
+						$('#length').text($('#comment').val().length + " characters");
+					}
+					
+					var checkEmail = $("#email").val().indexOf('@');
+					
+					if (checkEmail < 0) {
+						failed = true;
+						console.log(checkEmail);
+						alert($("#email").val() + ' is not a valid E-mail.');
+						$("form label[for='email']").css({'color' : 'red', 'font-weight' : 'bold', 'font-size' : '2em'});;
+						//$('#error').html.css("message.error"); MAKE THE STYLE WORK
+						$('#error').html('Invalid E-mail Address');
+					}
+					return failed;
 				}
 				
 				function clearForm() {
@@ -65,11 +134,13 @@
 				}
 				
 				function submitForm() {
-					if (checkForm())
-					{
+					if (!checkForm()) {
 						alert('Submitted');
 					}
+					else 
+						alert('FAILED');
 				}
+				
 				$('#clear').bind('click', clearForm);
 				$('#submit').bind('click', submitForm);
         
