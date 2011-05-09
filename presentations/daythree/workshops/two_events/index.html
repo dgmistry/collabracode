@@ -92,7 +92,7 @@
 							alert(formLabelName+ ' cannot be blank.');
 
 							var myLabel = ("form label[for='" + $(this).attr('name')+"']'" );
-							//var myLabel = ("form label[for='" + $(elem).attr('name')+"']'" );
+							//var myLabel = ("form label[for='" + $(elem).attr('name')+"']'" ); 
 							$(myLabel).css({'color' : 'red', 'font-weight' : 'bold', 'font-size' : '2em'});;
 						
 							$('#error').html("Please enter " + formLabelName);

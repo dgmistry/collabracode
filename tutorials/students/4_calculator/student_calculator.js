@@ -26,7 +26,7 @@ function addEventHandler(){
 	for (var i in buttons) {
 	console.log(buttons);
 //	var buttonCounter = 0;
-	function buttonClicked(evt){
+	function buttonClicked(evt){ 
 		var targVal = getInnerText(evt.target);
 		//console.log(targVal);
 		//buttonCounter++;

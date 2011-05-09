@@ -17,4 +17,4 @@ function getDisplayAsText() {
 function getDisplayAsFloat() {
   return parseFloat(getDisplayAsText());
 }
- 
+  
